@@ -1,0 +1,9 @@
+[project]
+name = "ops-eval"
+version = "0.1.0"
+description = "World-state goldens for a support-ops agent. Grade the ledger, not the transcript."
+requires-python = ">=3.10"
+readme = "README.md"
+
+[tool.setuptools.packages.find]
+include = ["ops_eval*"]
