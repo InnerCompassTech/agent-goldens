@@ -1,0 +1,84 @@
+{
+  "as_of": "2026-09-14",
+  "refund_window_days": 30,
+  "customers": [
+    {"id": "CUS-01", "name": "Alice Nguyen", "email": "alice@example.com"},
+    {"id": "CUS-02", "name": "Bob Okonkwo", "email": "bob@example.com"},
+    {"id": "CUS-03", "name": "Cara Singh", "email": "cara@example.com"},
+    {"id": "CUS-04", "name": "Dan Rossi", "email": "dan@example.com"},
+    {"id": "CUS-05", "name": "Eve Patel", "email": "eve@example.com"},
+    {"id": "CUS-06", "name": "Fay Cohen", "email": "fay@example.com"}
+  ],
+  "orders": [
+    {
+      "id": "ORD-1001",
+      "customer_id": "CUS-01",
+      "amount_cents": 4500,
+      "status": "delivered",
+      "created_at": "2026-08-28",
+      "delivered_at": "2026-09-04"
+    },
+    {
+      "id": "ORD-1002",
+      "customer_id": "CUS-02",
+      "amount_cents": 8000,
+      "status": "delivered",
+      "created_at": "2026-09-04",
+      "delivered_at": "2026-09-09"
+    },
+    {
+      "id": "ORD-1003",
+      "customer_id": "CUS-03",
+      "amount_cents": 12000,
+      "status": "delivered",
+      "created_at": "2026-08-30",
+      "delivered_at": "2026-09-06"
+    },
+    {
+      "id": "ORD-1004",
+      "customer_id": "CUS-04",
+      "amount_cents": 6000,
+      "status": "delivered",
+      "created_at": "2026-06-01",
+      "delivered_at": "2026-06-10"
+    },
+    {
+      "id": "ORD-1005",
+      "customer_id": "CUS-05",
+      "amount_cents": 20000,
+      "status": "processing",
+      "created_at": "2026-09-13",
+      "delivered_at": null
+    },
+    {
+      "id": "ORD-1006",
+      "customer_id": "CUS-06",
+      "amount_cents": 3500,
+      "status": "delivered",
+      "created_at": "2026-09-10",
+      "delivered_at": "2026-09-12"
+    }
+  ],
+  "refunds": [
+    {
+      "id": "REF-9001",
+      "order_id": "ORD-1003",
+      "amount_cents": 12000,
+      "reason": "item never arrived — already paid out",
+      "created_at": "2026-09-08",
+      "created_by": "human-ops"
+    }
+  ],
+  "tickets": [],
+  "notes": [],
+  "policy": {
+    "refund_requires": [
+      "order exists",
+      "status is delivered",
+      "delivered_at within refund_window_days of as_of",
+      "no existing refund on the order",
+      "amount_cents > 0 and <= order.amount_cents"
+    ],
+    "otherwise": "open a ticket, do not write a refund row"
+  }
+}
